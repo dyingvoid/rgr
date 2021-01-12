@@ -20,13 +20,14 @@ int main() {
 
 	integer_half = dec;
 	dec -= integer_half;
-	printf("%f", dec);
-	//finally
+	
+	int_to_bin(integer_half, int_bin);
+	
 
 }
 
-int int_to_bin(int dec, int* bin[]) {
-	int i = 0;gyi
+int int_to_bin(int dec, int* bin) {
+	int i = 0;
 
 	if (dec >= 0) { // для положительных чисел
 		while (dec > 0) { //конвертация в двоичный вид
@@ -56,7 +57,7 @@ int int_to_bin(int dec, int* bin[]) {
 	return 0;
 }
 
-int float_to_bin(float dec, int* float_bin[]) {
+int float_to_bin(float dec, int* float_bin) {
 	int change;
 	dec = fabs(dec);
 	int i = 0;
