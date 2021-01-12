@@ -21,12 +21,12 @@ int main() {
 	integer_half = dec;
 	dec -= integer_half;
 	printf("%f", dec);
-	
+	//finally
 
 }
 
 int int_to_bin(int dec, int* bin[]) {
-	int i = 0;
+	int i = 0;gyi
 
 	if (dec >= 0) { // для положительных чисел
 		while (dec > 0) { //конвертация в двоичный вид
