@@ -1,31 +1,56 @@
 ﻿#include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 
 int int_to_bin(int dec, int* bin[]);
+int float_to_bin(float dec, int* float_bin[]);
+void flush();
 
 int main() {
-	float dec;
-	int integer_half;
-	int sign;
-	int int_bin[32];
-	int float_bin[32];
-	int binary_number[64];
+	while (1) {
+		float dec;
+		int integer_half;
+		int sign;
+		int int_bin[32];
+		int float_bin[32];
+		int binary_number[64];
 
-	printf("Input your number.");
-	scanf_s("%f", &dec);
-	if (dec < 0)
-		sign = -1;
-	else
-		sign = 1;
+		if (scanf_s("%f", &dec)) {
+			printf("Success, calculating...\n");
+		}
+		else {
+			printf("Input must contain only a number.\n");
+			flush();
+		}
 
-	integer_half = dec;
-	dec -= integer_half;
-	printf("%f", dec);
-	
+		if (dec < 0)
+			sign = -1;
+		else
+			sign = 1;
+
+		integer_half = dec;
+		dec -= integer_half;
+
+		int_to_bin(integer_half, int_bin);
+		for (int i = 31; i >= 0; --i) {
+			if(int_bin[i] == 0 || int_bin[i] == 1)
+				printf("%d", int_bin[i]);
+		}
+
+		float_to_bin(dec, float_bin);
+		for (int i = 0; i < 32; ++i) {
+			if (float_bin[i] == 0 || float_bin[i] == 1)
+				printf("%d", float_bin[i]);
+		}
+	}
 
 }
 
-int int_to_bin(int dec, int* bin[]) {
+void flush() {
+	int c;
+	while ((c = getchar()) != '\n' && c != EOF) {}
+}
+int int_to_bin(int dec, int* bin) {
 	int i = 0;
 
 	if (dec >= 0) { // для положительных чисел
