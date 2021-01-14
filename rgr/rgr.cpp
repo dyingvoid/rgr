@@ -81,7 +81,7 @@ int int_to_bin(int dec, int* bin) {
 	return 0;
 }
 
-int float_to_bin(float dec, int* float_bin[]) {
+int float_to_bin(float dec, int* float_bin) {
 	int change;
 	dec = fabs(dec);
 	int i = 0;
